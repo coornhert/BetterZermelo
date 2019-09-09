@@ -1,0 +1,26 @@
+{
+
+    "manifest_version": 2,
+    "name": "KeuzeRoosterCalculator",
+    "version": "0.1.1",
+  
+    "description": "Because zermelo is bugged",
+  
+    "icons": {
+      "48": "icon.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["https://coornhert-gymnasium.zportal.nl/*"],
+        "js": ["main.js"],
+        "run_at": "document_end"
+      },
+      {
+        "matches": ["https://coornhert-gymnasium.zportal.nl/api/v3/oauth/*"],
+        "js": ["landing.js"],
+        "run_at": "document_end"
+      }
+    ]
+  
+  }
