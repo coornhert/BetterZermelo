@@ -22,11 +22,8 @@ async function calculateClasses() {
     enrolledFixed = scheduleArea.getElementsByClassName("enrolledFixed")
     total = enrolledMandatory.length + enrolledChoice.length + enrolledMultiple.length + enrolledFixed.length;
     if (calcBar == undefined) {
-        swipePage = document.getElementsByClassName("swipeSchedulePage")[0];
-        calcBar = document.createElement("div");
-        calcBar.className = "enrollmentStatusWidget problem";
+        calcBar = document.getElementsByClassName("enrollmentStatusWidget problem")[0];
         calcBar.innerText = "Je hebt nu " + total + " uur";
-        swipePage.appendChild(calcBar);
     }
     else {
         calcBar.innerText = "Je hebt nu " + total + " uur";
