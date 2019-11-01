@@ -5,7 +5,16 @@ var weekButton;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+}
+
+async function fixMededelingen() { 
+    await sleep(10);
+    texts = document.getElementsByClassName('announcementText');  
+    for (i = 0; i < texts.length; i++) {
+        object = texts[i]; 
+        object.innerHTML = object.innerHTML.replace(/\n/g, '<br />'); 
+    }
+}
 
 async function calculateClasses() {
     await sleep(10);
@@ -64,5 +73,15 @@ var checkExist = setInterval(() => {
             });
         });
         observerEnroll.observe(enrollmentText, { attributes: false, childList: true, characterData: true,} );
+
+        medButton = document.getElementsByClassName("master")[0];
+        console.log(medButton);
+        var observerMededeling = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                fixMededelingen();
+            });
+        });
+        observerMededeling.observe(medButton, { attributes: false, childList: true, characterData: false,} );
+
     }
 }, 100);
