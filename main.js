@@ -3,12 +3,28 @@
 var calcBar;
 var weekButton;
 
+const left = new KeyboardEvent("keydown", {
+    bubbles: true, cancelable: true, keyCode: 37
+});
+const right = new KeyboardEvent("keydown", {
+    bubbles: true, cancelable: true, keyCode: 39
+});
+
+function changeSmallThings() {
+    masterHolder = document.getElementsByClassName("masterHolder")[0];
+    masterHolder.style = "flex: 2; width: 75%;";
+    x = document.getElementsByClassName("title");
+    for (let item of x) {
+        item.innerText = item.innerText.replace("Zermelo", "BetterZermelo");
+    }
+}
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function fixMededelingen() { 
-    await sleep(10);
+    await sleep(500);
     texts = document.getElementsByClassName('announcementText');  
     for (i = 0; i < texts.length; i++) {
         object = texts[i]; 
@@ -58,6 +74,40 @@ var checkExist = setInterval(() => {
     if (document.getElementsByClassName("swipeSchedulePage")[0] != undefined) {
         clearInterval(checkExist);
 
+        titleBar = document.getElementsByClassName("navBar")[0];
+
+        buttonLeft = document.createElement("button");
+        buttonLeft.innerText = "<-";
+        buttonLeft.addEventListener('click', function(event) {
+            document.body.dispatchEvent(left);
+          });
+        buttonLeft.style = "max-width: 75px;\
+                            height: 25px;\
+                            position: relative;\
+                            bottom: -10px;\
+                            right: -250px;\
+                            background-color:#e0e0e0 !important;\
+                            border-radius: 10px;\
+                            color: #1f1f1f !important;\
+                            line-height: 0px;";
+        titleBar.appendChild(buttonLeft);
+
+        buttonRight = document.createElement("button");
+        buttonRight.innerText = "->";
+        buttonRight.addEventListener('click', function(event) {
+            document.body.dispatchEvent(right);
+          });
+        buttonRight.style ="max-width: 75px;\
+                            height: 25px;\
+                            position: relative;\
+                            bottom: -10px;\
+                            right: -350px;\
+                            background-color:#e0e0e0 !important;\
+                            border-radius: 10px;\
+                            color: #1f1f1f !important;\
+                            line-height: 0px;";
+        titleBar.appendChild(buttonRight);
+
         weekButton = document.getElementsByClassName("swipeSchedulePage")[0];
         var observerWeek = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
@@ -75,13 +125,14 @@ var checkExist = setInterval(() => {
         observerEnroll.observe(enrollmentText, { attributes: false, childList: true, characterData: true,} );
 
         medButton = document.getElementsByClassName("master")[0];
-        console.log(medButton);
         var observerMededeling = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 fixMededelingen();
             });
         });
-        observerMededeling.observe(medButton, { attributes: false, childList: true, characterData: false,} );
+        observerMededeling.observe(medButton, { attributes: true, childList: true, characterData: false,} );
+
+        changeSmallThings();
 
     }
 }, 100);

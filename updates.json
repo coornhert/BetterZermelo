@@ -10,7 +10,9 @@
         { "version": "0.1.5",
           "update_link": "https://github.com/coornhert/BetterZermelo/releases/download/v0.1.5/betterzermelo.xpi"},
         { "version": "0.1.6",
-          "update_link": "https://github.com/coornhert/BetterZermelo/releases/download/v0.1.6/betterzermelo.xpi"}
+          "update_link": "https://github.com/coornhert/BetterZermelo/releases/download/v0.1.6/betterzermelo.xpi"},
+        { "version": "0.1.7",
+          "update_link": "https://github.com/coornhert/BetterZermelo/releases/download/v0.1.7/betterzermelo.xpi"}
       ]
     }
   }
