@@ -17,6 +17,9 @@ function changeSmallThings() {
     for (let item of x) {
         item.innerText = item.innerText.replace("Zermelo", "BetterZermelo");
     }
+
+    lastModif = document.getElementsByClassName("lastModified")[0];
+    lastModif.innerHTML = "0.2.0";
 }
 
 function sleep(ms) {
@@ -77,7 +80,7 @@ var checkExist = setInterval(() => {
         titleBar = document.getElementsByClassName("navBar")[0];
 
         buttonLeft = document.createElement("button");
-        buttonLeft.innerText = "<-";
+        buttonLeft.innerText = "<";
         buttonLeft.addEventListener('click', function(event) {
             document.body.dispatchEvent(left);
           });
@@ -93,7 +96,7 @@ var checkExist = setInterval(() => {
         titleBar.appendChild(buttonLeft);
 
         buttonRight = document.createElement("button");
-        buttonRight.innerText = "->";
+        buttonRight.innerText = ">";
         buttonRight.addEventListener('click', function(event) {
             document.body.dispatchEvent(right);
           });
