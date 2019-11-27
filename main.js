@@ -19,7 +19,7 @@ function changeSmallThings() {
     }
 
     lastModif = document.getElementsByClassName("lastModified")[0];
-    lastModif.innerHTML = "0.2.0";
+    lastModif.innerHTML = "0.3.0";
 }
 
 function sleep(ms) {
@@ -31,7 +31,8 @@ async function fixMededelingen() {
     texts = document.getElementsByClassName('announcementText');  
     for (i = 0; i < texts.length; i++) {
         object = texts[i]; 
-        object.innerHTML = object.innerHTML.replace(/\n/g, '<br />'); 
+        var text = object.innerHTML.replace(/\n/g, '<br/>'); // replaces newlines in innerHTML with break tags
+        object.innerHTML = text;
     }
 }
 
