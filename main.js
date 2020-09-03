@@ -45,19 +45,19 @@ async function calculateClasses() {
 
     scheduleArea = currentWeek.childNodes[6].getElementsByClassName("appointmentlist")[0];
     // the sixth child of the currentWeek div is the scrollarea
-    enrolledMandatory = scheduleArea.getElementsByClassName("enrolledMandatory");
+    // enrolledMandatory = scheduleArea.getElementsByClassName("enrolledMandatory");
     enrolledChoice = scheduleArea.getElementsByClassName("enrolledCanUnenroll");
     enrolledMultiple = scheduleArea.getElementsByClassName("multipleEnrolled");
-    enrolledFixed = scheduleArea.getElementsByClassName("enrolledFixed")
-    total = enrolledMandatory.length + enrolledChoice.length + enrolledMultiple.length + enrolledFixed.length;
+    // enrolledFixed = scheduleArea.getElementsByClassName("enrolledFixed")
+    total = enrolledChoice.length + enrolledMultiple.length;
     if (calcBar == undefined) {
         calcBar = document.getElementsByClassName("enrollmentStatusWidget problem")[0];
-        calcBar.innerText = "Je hebt nu " + total + " uur";
+        calcBar.innerText = "Je moet nog " + (5 - total) + " uur";
     }
     else {
-        calcBar.innerText = "Je hebt nu " + total + " uur";
+        calcBar.innerText = "Je moet nog " + (5 - total) + " uur";
     }
-    if (total >= 37) {
+    if (total >= 5) {
         calcBar.style = "background-color: #77dd77";
     }
     else {
